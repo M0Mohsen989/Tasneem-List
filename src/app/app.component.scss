@@ -1,0 +1,33 @@
+/* تقليل الـ transition time */
+.example-box {
+  background-color: #f8f9fa; /* لون خفيف مريح للعين */
+  cursor: move;
+  transition: all 0.2s ease; /* تقليل الوقت هنا إلى 0.2 ثانية */
+  width: 100%; /* تثبيت العرض */
+}
+
+.example-box:hover {
+  background-color: #e9ecef;
+  transform: scale(1.02); /* تغيير الحجم عند التمرير */
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1); /* إضافة ظلال خفيفة عند التمرير */
+}
+
+/* تثبيت العرض أثناء التنقل */
+.cdk-drag-preview {
+  box-sizing: border-box;
+  border-radius: 4px;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+              0 8px 10px 1px rgba(0, 0, 0, 0.14),
+              0 3px 14px 2px rgba(0, 0, 0, 0.12);
+  width: 100% !important; /* التأكد من أن العرض ثابت أثناء السحب */
+}
+
+.cdk-drag-placeholder {
+  opacity: 0;
+  width: 100%; /* تثبيت العرض أثناء السحب */
+}
+
+/* التأثير عند السحب */
+.example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
+  transition: transform 0.2s cubic-bezier(0, 0, 0.2, 1); /* تقليل وقت الانتقال */
+}
