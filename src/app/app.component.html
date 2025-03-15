@@ -1,53 +1,57 @@
-<div class="container bg-light p-4 mt-4 rounded-4">
-  <h1 class="text-center"><span><i class="fa-solid fa-heart fa-beat" style="color: #6c2e04;"></i></span>  Tasneem List  <span><i class="fa-solid fa-heart fa-beat" style="color: #6c2e04;"></i></span></h1>
 
-  <div class="col col-md-6 mx-auto mt-4">
-    <mat-form-field class="example-full-width rounded-4 w-100">
-      <mat-label>Tasks</mat-label>
-      <input matInput placeholder="Ex. Do Exercise" [(ngModel)]="task">
-    </mat-form-field>
-    <button (click)="addTask()" class="btn btn-danger mt-2 w-100">Add Task</button>
-  </div>
+<div class="bg-rere h-100">
 
-  <div class="row mt-4">
-    <div class="col">
-      <h2 class="text-center my-2">ToDo</h2>
-      <div
-        class="rounded-3 bg-white shadow-lg p-3"
-        cdkDropList
-        #todoList="cdkDropList"
-        [cdkDropListData]="tasksArray"
-        [cdkDropListConnectedTo]="[doneList]"
-        class="example-list"
-        (cdkDropListDropped)="drop($event)"
-      >
-        @for (item of tasksArray.slice(0,3); track item) {
-          <div class="example-box mb-3 p-3 w-100 rounded-3 border border-dark-subtle shadow-sm mx-auto" cdkDrag>
-            {{ item.title }} 
-            <button (click)="deleteTask(item.id)" class="btn btn-danger btn-sm float-end">Delete</button>
-          </div>
-        }
+  <div class="container bg-light p-4 my-auto rounded-4">
+    <h1 class="text-center"><span><i class="fa-solid fa-heart fa-beat" style="color: #6c2e04;"></i></span>  Tasneem List  <span><i class="fa-solid fa-heart fa-beat" style="color: #6c2e04;"></i></span></h1>
+  
+    <div class="col col-md-6 mx-auto mt-4">
+      <mat-form-field class="example-full-width rounded-4 w-100">
+        <mat-label>Tasks</mat-label>
+        <input matInput placeholder="Ex. Do Exercise" [(ngModel)]="task">
+      </mat-form-field>
+      <button (click)="addTask()" class="btn btn-danger mt-2 w-100">Add Task</button>
+    </div>
+  
+    <div class="row mt-4">
+      <div class="col">
+        <h2 class="text-center my-2">ToDo</h2>
+        <div
+          class="rounded-3 bg-white shadow-lg p-3"
+          cdkDropList
+          #todoList="cdkDropList"
+          [cdkDropListData]="tasksArray"
+          [cdkDropListConnectedTo]="[doneList]"
+          class="example-list"
+          (cdkDropListDropped)="drop($event)"
+        >
+          @for (item of tasksArray.slice(0,3); track item) {
+            <div class="example-box mb-3 p-3 w-100 rounded-3 border border-dark-subtle shadow-sm mx-auto" cdkDrag>
+              {{ item.title }} 
+              <button (click)="deleteTask(item.id)" class="btn btn-danger btn-sm float-end">Delete</button>
+            </div>
+          }
+        </div>
+      </div>
+  
+      <div class="col">
+        <h2 class="text-center my-2">Done</h2>
+        <div
+          class="rounded-3 bg-white shadow-lg p-3"
+          cdkDropList
+          #doneList="cdkDropList"
+          [cdkDropListData]="doneArray"
+          [cdkDropListConnectedTo]="[todoList]"
+          class="example-list"
+          (cdkDropListDropped)="drop($event)"
+        >
+          @for (item of doneArray.slice(0,2); track item) {
+            <div class="example-box mb-3 p-3 w-100 rounded-3 border border-dark-subtle shadow-sm mx-auto "  cdkDrag>
+              {{ item.title }}
+              
+            </div>
+          }
+        </div>
       </div>
     </div>
-
-    <div class="col">
-      <h2 class="text-center my-2">Done</h2>
-      <div
-        class="rounded-3 bg-white shadow-lg p-3"
-        cdkDropList
-        #doneList="cdkDropList"
-        [cdkDropListData]="doneArray"
-        [cdkDropListConnectedTo]="[todoList]"
-        class="example-list"
-        (cdkDropListDropped)="drop($event)"
-      >
-        @for (item of doneArray.slice(0,2); track item) {
-          <div class="example-box mb-3 p-3 w-100 rounded-3 border border-dark-subtle shadow-sm mx-auto "  cdkDrag>
-            {{ item.title }}
-            
-          </div>
-        }
-      </div>
-    </div>
-  </div>
-</div> 
+  </div> 
+</div>
